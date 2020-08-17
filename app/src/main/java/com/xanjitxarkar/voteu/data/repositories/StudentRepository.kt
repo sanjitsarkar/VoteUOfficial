@@ -6,8 +6,10 @@ import androidx.lifecycle.viewModelScope
 import com.google.firebase.firestore.FieldValue
 import com.xanjitxarkar.voteu.R
 import com.xanjitxarkar.voteu.data.models.RollNo
+import com.xanjitxarkar.voteu.data.models.SearchResult
 import com.xanjitxarkar.voteu.data.models.Student
 import com.xanjitxarkar.voteu.data.models.StudentInfo
+import com.xanjitxarkar.voteu.data.repositories.FirebaseCollection.collegeCollection
 import com.xanjitxarkar.voteu.data.repositories.FirebaseCollection.getUid
 import com.xanjitxarkar.voteu.data.repositories.FirebaseCollection.studentCollection
 import com.xanjitxarkar.voteu.utils.DataState
@@ -29,6 +31,41 @@ constructor(
     private val authRepository: AuthRepository
 ) {
     var TAG: String = "StudentRepository"
+
+
+    suspend fun search(search_key:String,collegeId: String):Flow<DataState<MutableList<SearchResult>>> = flow {
+
+       try {
+           emit(DataState.Loading)
+           val results:MutableList<SearchResult> = mutableListOf()
+//           val datas = collegeCollection.document(collegeId).collection("Students").orderBy("name").startAfter(search_key).endAt("$search_key\uf8ff").get().await()
+
+           val datas = collegeCollection.document(collegeId).collection("Students").orderBy("search_key").whereArrayContainsAny("search_key",
+               listOf(search_key.toLowerCase())).get().await()
+           datas.documents.forEach { data->
+               run {
+                   Log.d("AppDebug",data.get("name").toString())
+                   results.add(SearchResult(data.get("name").toString(),data.get("semester").toString(),data.get("email").toString(),data.id,data.get("branch_id").toString(),data.get("branchCode").toString()))
+               }
+           }
+           if(datas.isEmpty)
+           {
+               emit(DataState.NoData("No results found..."))
+           }
+           else
+           {
+               emit(DataState.Success(results))
+           }
+
+       }
+       catch (e:Exception)
+       {
+          emit(DataState.Error(e))
+       }
+
+
+    }
+
     suspend fun voted():Flow<DataState<Boolean>> = flow {
 
         try {
