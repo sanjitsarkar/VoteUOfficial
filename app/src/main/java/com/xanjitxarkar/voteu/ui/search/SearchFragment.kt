@@ -42,7 +42,7 @@ searchViewModel.searchResultsLiveData.observe(viewLifecycleOwner, Observer {datS
     run {
         when (datState) {
             is DataState.Loading -> {
-
+                search_info.gone()
                 search_loader.show()
             }
             is DataState.NoData -> {
@@ -53,7 +53,7 @@ searchViewModel.searchResultsLiveData.observe(viewLifecycleOwner, Observer {datS
             }
             is DataState.Success -> {
                 search_loader.gone()
-
+                search_info.gone()
                 adapter.addItems(datState.data)
 
             }
@@ -71,14 +71,14 @@ searchViewModel.searchResultsLiveData.observe(viewLifecycleOwner, Observer {datS
 
                 override fun onQueryTextChange(newText: String): Boolean {
 //                    Log.d("AppDebug",newText)
-
+                    CoroutineScope(IO).launch {
+                        searchViewModel.search(newText,it.collegeId)
+                    }
                     return false
                 }
 
                 override fun onQueryTextSubmit(query: String): Boolean {
-                    CoroutineScope(IO).launch {
-                        searchViewModel.search(query,it.collegeId)
-                    }
+
                     return false
                 }
 

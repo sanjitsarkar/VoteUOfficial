@@ -18,20 +18,35 @@
         app:cardCornerRadius="10dp"
         app:contentPadding="20dp">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+
+            android:layout_height="match_parent">
 
             <TextView
                 android:id="@+id/candidate_name"
+                android:foregroundGravity="center_vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_semibold"
                 android:text="@{search.name}"
-                android:textAlignment="center"
+                android:marqueeRepeatLimit="marquee_forever"
+
                 android:textColor="@color/sky_blue" />
-        </LinearLayout>
+
+            <TextView
+                android:id="@+id/branch_sem"
+                android:layout_alignParentRight="true"
+                android:padding="5dp"
+                android:fontFamily="@font/poppins_medium"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:background="@drawable/rounded_blue_box"
+                android:textColor="@color/white"
+                android:text="@{search.branchCode+` - `+search.semester}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
 
     </androidx.cardview.widget.CardView>
 </layout>
