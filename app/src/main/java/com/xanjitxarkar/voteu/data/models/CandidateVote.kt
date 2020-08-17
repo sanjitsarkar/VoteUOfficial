@@ -7,7 +7,7 @@ import com.bumptech.glide.request.RequestOptions
 
 
 data class CandidateVote(val rollNo:String, val name:String, val branchName:String, val branchCode:String, var semester:String, val imgUrl:String,
-                         var isVoted:Boolean, val postId:String)
+                         var voted:Boolean, val postId:String)
 {
     init {
         semester += when(semester) {

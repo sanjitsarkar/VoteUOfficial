@@ -150,7 +150,7 @@ class VoteFragment : Fragment(R.layout.vote_fragment) {
             when (dataState) {
                 is DataState.Loading -> {
                     info_vote.gone()
-activity?.toast("Loading Post")
+
                 }
                 is DataState.Success -> {
 
@@ -196,12 +196,12 @@ activity?.toast("Loading Post")
                         adapter.notifyDataSetChanged()
                         adapter.listener = { view, item, position ->
                             run {
-                                if (!item.isVoted) {
+                                if (!item.voted) {
                                     lifecycleScope.launch(IO) {
                                         withContext(Main)
                                         {
-                                            item.isVoted = true
-                                            adapter.items.forEach { it.isVoted=true }
+                                            item.voted = true
+                                            adapter.items.forEach { it.voted=true }
                                             adapter.notifyDataSetChanged()
                                             view.findViewById<CardView>(R.id.vote_card).setCardBackgroundColor(
                                                 getColor(requireContext(),R.color.sky_blue_light))
@@ -210,7 +210,7 @@ activity?.toast("Loading Post")
                                         withContext(Main)
                                         {
                                             next.isEnabled = true
-                                            activity?.toast("Voted to ${item.name}")
+                                            activity?.toast("voted to ${item.name}")
 
 
                                         }

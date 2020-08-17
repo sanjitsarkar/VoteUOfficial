@@ -114,7 +114,7 @@ var electionDateEnd:Timestamp? = null
                                        }
 
 
-                                                       _toolbarDetails.value = ToolBarData(name,collegeId,collegeData?.name!!,user?.photoUrl!!,user?.email!!,rollNo,collegeData?.electionId,branchName,branchId,branchCode,electionDateStart,electionDateEnd,semester,studentData.isVoted)
+                                                       _toolbarDetails.value = ToolBarData(name,collegeId,collegeData?.name!!,user?.photoUrl!!,user?.email!!,rollNo,collegeData?.electionId,branchName,branchId,branchCode,electionDateStart,electionDateEnd,semester,studentData.voted)
                                                        Log.d(TAG,_toolbarDetails.value.toString())
 
 

@@ -56,7 +56,7 @@ class DashboardFragment : Fragment() {
 
       homeViewModel.toolbarDetails.observe(viewLifecycleOwner, Observer {
           lifecycleScope.launch(IO) {
-              viewModel.isVoted()
+              viewModel.voted()
           }
           if(it.electionId=="")
           {
@@ -95,7 +95,7 @@ else {
                                   }
                               else
                                   {
-                                   if(!it.isVoted)
+                                   if(!it.voted)
                                    {
 
                                        binding.result.gone()
@@ -105,7 +105,7 @@ else {
                                            viewModel.electionInfo(it.electionId!!)
                                        }
 
-                                       viewModel.isVotedLiveData.observe(viewLifecycleOwner,
+                                       viewModel.votedLiveData.observe(viewLifecycleOwner,
                                            Observer { dataState->
                                                when(dataState)
                                                {

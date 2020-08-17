@@ -189,12 +189,12 @@
                     android:layout_marginBottom="0dp"
                     android:layout_weight="1"
                     android:ems="10"
-                    android:fontFamily="@font/poppins_medium"
+                    android:fontFamily="@font/montserrat"
                     android:marqueeRepeatLimit="marquee_forever"
 
                     android:text="@{viewModel.studentData.name}"
                     android:textAlignment="textStart"
-                    android:textColor="@color/navy_blue"
+                    android:textColor="@color/sky_blue"
                     android:textSize="18sp"
                     android:visibility="visible" />
 
@@ -204,11 +204,11 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:ems="10"
-                    android:fontFamily="@font/poppins_medium"
+                    android:fontFamily="@font/montserrat"
                     android:text="@{viewModel.studentData.branchName}"
 
                     android:textAlignment="textStart"
-                    android:textColor="@color/navy_blue"
+                    android:textColor="@color/sky_blue"
                     android:textSize="18sp"
                     android:visibility="visible" />
 
@@ -218,11 +218,11 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:ems="10"
-                    android:fontFamily="@font/poppins_medium"
+                    android:fontFamily="@font/montserrat"
                     android:text="@{viewModel.studentData.semester}"
 
                     android:textAlignment="textStart"
-                    android:textColor="@color/navy_blue"
+                    android:textColor="@color/sky_blue"
                     android:textSize="18sp"
                     android:visibility="visible" />
 

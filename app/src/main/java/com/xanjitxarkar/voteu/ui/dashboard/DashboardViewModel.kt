@@ -24,7 +24,7 @@ constructor(
     private val electionRepo: ElectionRepository,
     @Assisted private val savedStateHandle: SavedStateHandle
 ): ViewModel() {
-    val isVotedLiveData:MutableLiveData<DataState<Boolean>> = MutableLiveData()
+    val votedLiveData:MutableLiveData<DataState<Boolean>> = MutableLiveData()
     val electionLiveData:MutableLiveData<DataState<Election>> = MutableLiveData()
 
 suspend fun electionInfo(electionId:String)
@@ -34,10 +34,10 @@ suspend fun electionInfo(electionId:String)
 }
 
 
-    suspend fun isVoted()
+    suspend fun voted()
     {
         viewModelScope.launch {
-            studentRepo.isVoted().onEach { dataState -> isVotedLiveData.value = dataState }.launchIn(viewModelScope)
+            studentRepo.voted().onEach { dataState -> votedLiveData.value = dataState }.launchIn(viewModelScope)
         }
     }
 }

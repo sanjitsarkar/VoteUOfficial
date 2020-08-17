@@ -34,12 +34,12 @@ constructor(
     val info: LiveData<String>
         get() = _info
     val isLoggedIn: MutableLiveData<Boolean> = MutableLiveData<Boolean>()
-    val isVoted: MutableLiveData<DataState<Boolean>> = MutableLiveData()
-suspend fun isVoted() {
+    val voted: MutableLiveData<DataState<Boolean>> = MutableLiveData()
+suspend fun voted() {
     viewModelScope.launch {
-        studentRepo.isVoted().collect { dataState ->
+        studentRepo.voted().collect { dataState ->
             run {
-                isVoted.value = dataState
+                voted.value = dataState
             }
         }
     }

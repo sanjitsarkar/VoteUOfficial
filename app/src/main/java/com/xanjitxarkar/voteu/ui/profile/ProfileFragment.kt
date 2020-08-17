@@ -59,7 +59,7 @@ class ProfileFragment : Fragment() {
 
            lifecycleScope.launch(IO)
            {
-               profileViewModel.isVoted()
+               profileViewModel.voted()
            }
 
             binding.profileCardView.show()
@@ -90,18 +90,18 @@ class ProfileFragment : Fragment() {
                 .into(binding.userPhotoProfile)
         })
 
-        profileViewModel.isVoted.observe(viewLifecycleOwner, Observer {
+        profileViewModel.voted.observe(viewLifecycleOwner, Observer {
             when(it)
             {
                 is DataState.Success->
                 {
                     if(it.data)
                     {
-                        binding.isVoted.text = "Voted"
+                        binding.voted.text = "voted"
                     }
                     else
                     {
-                        binding.isVoted.text = "Not Voted"
+                        binding.voted.text = "Not voted"
                     }
                 }
             }

@@ -20,7 +20,7 @@ class VoteAdapter: BaseRecyclerViewAdapter<CandidateVote,CandidateVoteCardBindin
         position: Int
     ) {
         holder.binding.candidateVote = items[position]
-        if(!items[position].isVoted) {
+        if(!items[position].voted) {
             holder.binding.voteCard.setCardBackgroundColor(
                 ContextCompat.getColor(
                     holder.itemView.context,

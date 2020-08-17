@@ -158,12 +158,12 @@
                     android:fontFamily="@font/poppins"
                     android:singleLine="false"
                     android:textColor="#8D99A5"
-                    app:layout_constraintBottom_toTopOf="@id/isVoted"
+                    app:layout_constraintBottom_toTopOf="@id/voted"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/election_date_profile" />
 
                 <TextView
-                    android:id="@+id/isVoted"
+                    android:id="@+id/voted"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_medium"

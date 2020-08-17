@@ -11,6 +11,7 @@ import com.xanjitxarkar.voteu.data.models.StudentInfo
 import com.xanjitxarkar.voteu.data.repositories.FirebaseCollection.getUid
 import com.xanjitxarkar.voteu.data.repositories.FirebaseCollection.studentCollection
 import com.xanjitxarkar.voteu.utils.DataState
+import com.xanjitxarkar.voteu.utils.Utils.capitalizeWords
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.flow.Flow
@@ -28,12 +29,12 @@ constructor(
     private val authRepository: AuthRepository
 ) {
     var TAG: String = "StudentRepository"
-    suspend fun isVoted():Flow<DataState<Boolean>> = flow {
+    suspend fun voted():Flow<DataState<Boolean>> = flow {
 
         try {
             emit(DataState.Loading)
             val studentData = studentCollection.document(getUid()).get().await()
-            if(studentData.data?.get("isVoted") as Boolean)
+            if(studentData.data?.get("voted") as Boolean)
             {
                 emit(DataState.Success(true))
             }
@@ -50,7 +51,7 @@ constructor(
 
     suspend fun voteSuccess()
     {
-        studentCollection.document(getUid()).update("isVoted",true).await()
+        studentCollection.document(getUid()).update("voted",true).await()
     }
     suspend fun getStudentDetails(search: String, rollNo: String): RollNo?{
         try {
@@ -126,7 +127,7 @@ constructor(
     {
         return try {
             val details = studentCollection.whereEqualTo("rollNo",rollNo).get().await()
-            Student(details.documents[0].get("rollNo") as String,details.documents[0].get("collegeId") as String,details.documents[0].get("isVoted") as Boolean,details.documents[0].get("voteCount") as Long,details.documents[0].get("imgUrl") as String)
+            Student(details.documents[0].get("rollNo") as String,details.documents[0].get("collegeId") as String,details.documents[0].get("voted") as Boolean,details.documents[0].get("voteCount") as Long,details.documents[0].get("imgUrl") as String)
         }
         catch (e:Exception)
         {
@@ -211,7 +212,7 @@ constructor(
                         Student(
                             studentData.get("rollNo") as String,
                             studentData.get("collegeId") as String,
-                            studentData.get("isVoted") as Boolean,
+                            studentData.get("voted") as Boolean,
                             studentData.get("voteCount") as Long,
                             imgUrl.toString()
 
@@ -258,9 +259,9 @@ suspend fun updateVoteCount()
 
 
 //Log.d("AppDebug",collegeSearch.capitalize())
-Log.d("AppDebug",collegeSearch.capitalize())
+
             val data = getStudentDetails(
-                collegeSearch.capitalize(),
+                collegeSearch.toLowerCase().capitalizeWords(),
                 rollNo.toString()
             )
 
@@ -268,7 +269,7 @@ Log.d("AppDebug",collegeSearch.capitalize())
                 emit(DataState.Info("Roll no or College name is invalid"))
             } else {
 
-                val result = collegeRepo.isEmailMatched(rollNo,userInfo?.email!!,data?.collegId!!)
+                val result = collegeRepo.isEmailMatched(rollNo,userInfo?.email!!,data?.collegeId!!)
 //            emit(DataState.Info(result.toString()))
                 Log.d(TAG,"Result ${result.toString()}")
                 if(!result)
@@ -294,7 +295,7 @@ Log.d("AppDebug",collegeSearch.capitalize())
                             emit(DataState.Info("No Branch available"))
                         }
                     val imgUrl = authRepository.getUser()?.photoUrl
-                        emit(DataState.Success(StudentInfo(rollNo.toString(),rollNoInfo.name,branchData?.name!!,rollNoInfo.semester.toString(),data.collegId,imgUrl.toString())))
+                        emit(DataState.Success(StudentInfo(rollNo.toString(),rollNoInfo.name,branchData?.name!!,rollNoInfo.semester.toString(),data.collegeId,imgUrl.toString())))
 //
                     }
                 }
