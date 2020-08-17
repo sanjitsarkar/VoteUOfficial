@@ -255,11 +255,11 @@ suspend fun updateVoteCount()
 //                val uid = FirebaseCollection.getUid()
                 val userInfo = authRepository.getUser()
 //            emit(DataState.Info(userInfo?.email!!))
-            var search = collegeSearch.toLowerCase()
 
 
+Log.d("AppDebug",collegeSearch.capitalize())
             val data = getStudentDetails(
-                search.capitalize(),
+                collegeSearch.capitalize(),
                 rollNo.toString()
             )
 
