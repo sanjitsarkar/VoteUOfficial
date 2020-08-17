@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.xanjitxarkar.voteu.ui.profile.ProfileViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#E7EEF1"
+        tools:context=".ui.profile.ProfileFragment">
+
+
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+
+            android:src="@drawable/bottom_rounded_box_2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ProgressBar
+            android:id="@+id/user_pic_loader"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:elevation="50dp"
+            android:indeterminateTint="@color/sky_blue"
+            android:interpolator="@android:interpolator/accelerate_cubic"
+            app:layout_constraintBottom_toBottomOf="@+id/user"
+            app:layout_constraintEnd_toEndOf="@+id/user"
+            app:layout_constraintStart_toStartOf="@+id/user"
+            app:layout_constraintTop_toTopOf="@+id/user" />
+
+        <androidx.cardview.widget.CardView
+
+            android:id="@+id/user"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_marginBottom="80dp"
+            app:cardCornerRadius="100dp"
+            app:cardElevation="20dp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView6"
+            app:layout_constraintEnd_toStartOf="@+id/imageView6"
+            app:layout_constraintStart_toEndOf="@+id/imageView6">
+
+            <ImageView
+
+                android:id="@+id/user_photo_profile"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_gravity="center"
+                android:scaleType="fitCenter"
+
+                />
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/user_name"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/poppins_medium"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/user" />
+
+        <TextView
+            android:id="@+id/email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:fontFamily="@font/poppins"
+            android:textColor="@color/sky_blue_light"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/user" />
+
+
+        <ProgressBar
+            android:id="@+id/profile_loader"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="20dp"
+            android:indeterminateTint="@color/sky_blue"
+            android:interpolator="@android:interpolator/accelerate_cubic"
+            app:layout_constraintBottom_toTopOf="@+id/logout_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/user"
+            app:layout_constraintVertical_bias="0.621" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/profile_cardView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:requiresFadingEdge="horizontal|vertical"
+            android:stateListAnimator="@android:animator/fade_in"
+            android:touchscreenBlocksFocus="true"
+            android:visibility="visible"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="10dp"
+            app:contentPadding="15dp"
+            app:layout_constraintBottom_toTopOf="@+id/logout_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView6"
+            app:layout_constraintVertical_bias="0.114">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/roll_no_profile_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:fontFamily="@font/poppins"
+                    android:textColor="#8D99A5"
+                    app:layout_constraintBottom_toBottomOf="@+id/roll_no_profile"
+                    app:layout_constraintStart_toEndOf="@+id/roll_no_profile"
+                    app:layout_constraintTop_toTopOf="@+id/roll_no_profile" />
+
+                <TextView
+                    android:id="@+id/college_name_profile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="1dp"
+                    android:layout_marginBottom="18dp"
+                    android:ellipsize="marquee"
+                    android:fontFamily="@font/poppins_medium"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/branch_name_profile"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <TextView
+                    android:id="@+id/election_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins"
+                    android:singleLine="false"
+                    android:textColor="#8D99A5"
+                    app:layout_constraintBottom_toTopOf="@id/isVoted"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/election_date_profile" />
+
+                <TextView
+                    android:id="@+id/isVoted"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_medium"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent" />
+
+                <ImageView
+                    android:id="@+id/college_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:src="@drawable/school"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toStartOf="@+id/college_name_profile"
+                    app:layout_constraintTop_toTopOf="@+id/college_name_profile" />
+
+                <TextView
+                    android:id="@+id/roll_no_profile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="Roll No"
+                    android:textSize="16sp"
+                    android:visibility="visible"
+                    app:layout_constraintStart_toStartOf="@+id/election_date_profile"
+                    app:layout_constraintTop_toBottomOf="@+id/branch_name_profile" />
+
+                <TextView
+                    android:id="@+id/election_date_profile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="Election Date"
+                    android:textSize="16sp"
+                    android:visibility="visible"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/roll_no_profile" />
+
+                <TextView
+                    android:id="@+id/branch_name_profile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="3dp"
+                    android:fontFamily="@font/poppins_light"
+                    app:layout_constraintBottom_toTopOf="@+id/roll_no_profile"
+                    app:layout_constraintStart_toStartOf="@+id/college_name_profile" />
+
+                <TextView
+                    android:id="@+id/semester_name_profile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:fontFamily="@font/poppins_light"
+                    app:layout_constraintBottom_toBottomOf="@+id/branch_name_profile"
+                    app:layout_constraintStart_toEndOf="@+id/branch_name_profile"
+                    app:layout_constraintTop_toTopOf="@+id/branch_name_profile" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <Button
+            android:id="@+id/logout_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginBottom="24dp"
+            android:backgroundTint="@color/sky_blue"
+            android:elevation="20dp"
+            android:fontFamily="@font/poppins_medium"
+            android:foregroundGravity="bottom"
+            android:padding="10dp"
+            android:text="LOGOUT"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:cornerRadius="100dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

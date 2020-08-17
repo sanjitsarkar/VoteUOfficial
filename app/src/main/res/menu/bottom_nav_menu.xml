@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:title="Search"
+        android:id="@+id/searchFragment2"
+        android:icon="@drawable/search"
+        app:showAsAction="ifRoom"
+
+        />
+    <item
+        android:title="Home"
+        android:id="@+id/dashboardFragment"
+        android:icon="@drawable/home"
+        app:showAsAction="ifRoom"
+        />
+    <item
+        android:title="Notification"
+        android:id="@+id/notificationFragment3"
+        android:icon="@drawable/notification"
+        app:showAsAction="ifRoom"
+        />
+</menu>

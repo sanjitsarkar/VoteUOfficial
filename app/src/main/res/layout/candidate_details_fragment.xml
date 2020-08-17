@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.candidate_details.CandidateDetailsFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#C8E8F6">
+
+        <ProgressBar
+            android:id="@+id/candidate_data_loader"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminateTint="@color/sky_blue"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/candidate_cardView" />
+
+        <TextView
+            android:id="@+id/candidate_post_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:elevation="30dp"
+            android:fontFamily="@font/poppins_light"
+            android:textColor="#2E96C5"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView6"
+            app:layout_constraintEnd_toEndOf="@+id/imageView6"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ProgressBar
+            android:id="@+id/candidate_pic_loader"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:elevation="50dp"
+            android:indeterminateTint="@color/sky_blue"
+            android:interpolator="@android:interpolator/accelerate_cubic"
+            app:layout_constraintBottom_toBottomOf="@+id/candidate_user"
+            app:layout_constraintEnd_toEndOf="@+id/candidate_user"
+            app:layout_constraintStart_toStartOf="@+id/candidate_user"
+            app:layout_constraintTop_toTopOf="@+id/candidate_user" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/candidate_cardView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="10dp"
+            android:requiresFadingEdge="horizontal|vertical"
+            android:stateListAnimator="@android:animator/fade_in"
+            android:touchscreenBlocksFocus="true"
+            android:visibility="gone"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="20dp"
+            app:contentPadding="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView6">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@+id/roll_no_candidate"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/roll_no_candidate"
+                tools:layout_editor_absoluteX="15dp"
+                tools:layout_editor_absoluteY="15dp">
+
+                <TextView
+                    android:id="@+id/roll_no_candidate_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:fontFamily="@font/poppins"
+                    android:textColor="#8D99A5"
+                    android:visibility="visible"
+                    app:layout_constraintBottom_toBottomOf="@+id/roll_no_candidate"
+                    app:layout_constraintStart_toEndOf="@+id/roll_no_candidate"
+                    app:layout_constraintTop_toTopOf="@+id/roll_no_candidate" />
+
+                <TextView
+                    android:id="@+id/roll_no_candidate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="Roll No"
+                    android:textSize="16sp"
+                    android:visibility="visible"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/branch_name_candidate" />
+
+                <TextView
+                    android:id="@+id/branch_name_candidate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_medium"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/semester_name_candidate"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/semester_name_candidate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_medium"
+                    android:visibility="visible"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+
+            android:src="@drawable/bottom_rounded_box_white"
+            app:layout_constraintEnd_toStartOf="@+id/user_pic_loader"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.cardview.widget.CardView
+
+            android:id="@+id/candidate_user"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_marginBottom="80dp"
+            app:cardCornerRadius="100dp"
+            app:cardElevation="20dp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView6"
+            app:layout_constraintEnd_toStartOf="@+id/imageView6"
+            app:layout_constraintStart_toEndOf="@+id/imageView6">
+
+            <ImageView
+
+                android:id="@+id/candidate_photo_candidate"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_gravity="center"
+                android:scaleType="fitCenter"
+
+                />
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/candidate_name"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_medium"
+
+            android:textColor="#3F525A"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/candidate_post_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/candidate_user"
+            app:layout_constraintVertical_bias="1.0" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</FrameLayout>

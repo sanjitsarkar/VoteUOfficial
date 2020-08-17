@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/dashboardFragment">
+    <fragment
+        android:id="@+id/dashboardFragment"
+        android:name="com.xanjitxarkar.voteu.ui.dashboard.DashboardFragment"
+        android:label="dashboard_fragment"
+        tools:layout="@layout/dashboard_fragment" >
+        <action
+            android:id="@+id/action_dashboardFragment_to_postsFragment"
+            app:destination="@id/postsFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_collegeFragment"
+            app:destination="@id/collegeFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_voteFragment"
+            app:destination="@id/voteFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_resultFragment"
+            app:destination="@id/resultFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.xanjitxarkar.voteu.ui.profile.ProfileFragment"
+        android:label="profile_fragment"
+        tools:layout="@layout/profile_fragment" />
+    <fragment
+        android:id="@+id/postsFragment"
+        android:name="com.xanjitxarkar.voteu.ui.post.PostsFragment"
+        android:label="posts_fragment"
+        tools:layout="@layout/posts_fragment" >
+        <action
+            android:id="@+id/action_postsFragment_to_candidatesFragment"
+            app:destination="@id/candidatesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/candidatesFragment"
+        android:name="com.xanjitxarkar.voteu.ui.candidate.CandidatesFragment"
+        android:label="CandidatesFragment" >
+        <action
+            android:id="@+id/action_candidatesFragment_to_candidateDetailsFragment"
+            app:destination="@id/candidateDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/candidateDetailsFragment"
+        android:name="com.xanjitxarkar.voteu.ui.candidate_details.CandidateDetailsFragment"
+        android:label="candidate_details_fragment"
+        tools:layout="@layout/candidate_details_fragment" />
+    <fragment
+        android:id="@+id/searchFragment2"
+        android:name="com.xanjitxarkar.voteu.ui.search.SearchFragment"
+        android:label="search_fragment"
+        tools:layout="@layout/search_fragment" />
+    <fragment
+        android:id="@+id/notificationFragment3"
+        android:name="com.xanjitxarkar.voteu.ui.notification.NotificationFragment"
+        android:label="notification_fragment"
+        tools:layout="@layout/notification_fragment" />
+    <fragment
+        android:id="@+id/collegeFragment"
+        android:name="com.xanjitxarkar.voteu.ui.college.CollegeFragment"
+        android:label="college_fragment"
+        tools:layout="@layout/college_fragment" />
+    <fragment
+        android:id="@+id/voteFragment"
+        android:name="com.xanjitxarkar.voteu.ui.vote.VoteFragment"
+        android:label="vote_fragment"
+        tools:layout="@layout/vote_fragment" >
+        <action
+            android:id="@+id/action_voteFragment_to_successFragment"
+            app:destination="@id/successFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/successFragment"
+        android:name="com.xanjitxarkar.voteu.ui.success.SuccessFragment"
+        android:label="success_fragment"
+        tools:layout="@layout/success_fragment" >
+        <action
+            android:id="@+id/action_successFragment_to_dashboardFragment"
+            app:destination="@id/dashboardFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/resultFragment"
+        android:name="com.xanjitxarkar.voteu.ui.result.ResultFragment"
+        android:label="result_fragment"
+        tools:layout="@layout/result_fragment" />
+</navigation>
