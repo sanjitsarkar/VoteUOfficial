@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
@@ -23,7 +24,7 @@ class SuccessFragment : Fragment() {
     }
 
     private lateinit var viewModel: SuccessViewModel
-    private val voteViewModel: VoteViewModel by viewModels<VoteViewModel>()
+    private val voteViewModel: VoteViewModel by activityViewModels<VoteViewModel>()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

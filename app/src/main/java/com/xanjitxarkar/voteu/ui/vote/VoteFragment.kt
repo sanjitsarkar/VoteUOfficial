@@ -1,5 +1,6 @@
 package com.xanjitxarkar.voteu.ui.vote
 
+import android.app.AlertDialog
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -47,7 +48,23 @@ class VoteFragment : Fragment(R.layout.vote_fragment) {
         val callback: OnBackPressedCallback =
             object : OnBackPressedCallback(true) {
                 override fun handleOnBackPressed() {
+                    val builder = AlertDialog.Builder(requireContext())
+                    builder.setTitle("Alert")
+                    builder.setMessage("You can not exit from app while voting")
+//builder.setPositiveButton("OK", DialogInterface.OnClickListener(function = x))
 
+//                    builder.setPositiveButton(android.R.string.yes) { dialog, which ->
+//
+//                    }
+//
+//                    builder.setNegativeButton(android.R.string.no) { dialog, which ->
+//
+//                    }
+//
+//                    builder.setNeutralButton("Maybe") { dialog, which ->
+//
+//                    }
+                    builder.show()
                 }
             }
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
