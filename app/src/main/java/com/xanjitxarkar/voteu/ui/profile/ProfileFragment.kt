@@ -97,11 +97,11 @@ class ProfileFragment : Fragment() {
                 {
                     if(it.data)
                     {
-                        binding.voted.text = "voted"
+                        binding.voted.text = "Voted"
                     }
                     else
                     {
-                        binding.voted.text = "Not voted"
+                        binding.voted.text = "Not Voted"
                     }
                 }
             }

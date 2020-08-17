@@ -1,11 +1,9 @@
 package com.xanjitxarkar.voteu.ui.result
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import com.xanjitxarkar.voteu.R
@@ -22,6 +20,7 @@ import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.launch
 import java.util.*
 
+
 @AndroidEntryPoint
 class ResultFragment : Fragment(R.layout.result_fragment) {
 
@@ -32,6 +31,7 @@ class ResultFragment : Fragment(R.layout.result_fragment) {
     private  val viewModel: ResultViewModel by activityViewModels<ResultViewModel>()
     private  val homeViewModel: HomeViewModel by activityViewModels<HomeViewModel>()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
 
          val adapter:ResultAdapter by lazy {
             ResultAdapter()

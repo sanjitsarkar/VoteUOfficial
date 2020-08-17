@@ -3,36 +3,31 @@ package com.xanjitxarkar.voteu.ui.vote
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import androidx.fragment.app.Fragment
 import android.view.View
-import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.annotation.RequiresApi
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat.getColor
-import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
-import com.bumptech.glide.Glide
 import com.xanjitxarkar.voteu.R
-import com.xanjitxarkar.voteu.data.models.CandidateVote
 import com.xanjitxarkar.voteu.data.models.Post
-import com.xanjitxarkar.voteu.databinding.CandidateVoteCardBinding
 import com.xanjitxarkar.voteu.ui.home.HomeViewModel
 import com.xanjitxarkar.voteu.utils.DataState
 import com.xanjitxarkar.voteu.utils.Utils.gone
 import com.xanjitxarkar.voteu.utils.Utils.show
 import com.xanjitxarkar.voteu.utils.Utils.toast
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.candidate_vote_card.*
-import kotlinx.android.synthetic.main.result_fragment.*
 import kotlinx.android.synthetic.main.vote_fragment.*
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.util.*
 
 @AndroidEntryPoint
@@ -49,6 +44,13 @@ class VoteFragment : Fragment(R.layout.vote_fragment) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val callback: OnBackPressedCallback =
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+
+                }
+            }
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
         val adapter: VoteAdapter by lazy {
             VoteAdapter()
         }
