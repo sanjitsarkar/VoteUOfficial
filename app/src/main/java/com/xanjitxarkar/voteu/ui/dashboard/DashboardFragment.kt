@@ -79,66 +79,56 @@ else {
                           is DataState.Success -> {
                               dashboard_loader.gone()
 
-                                  if(dataState.data.isResultDeclared) {
-                                      binding.vote.gone()
-                                     binding.result.show()
-                                      binding.candidates.show()
+                              if (dataState.data.isResultDeclared) {
+                                  binding.vote.gone()
+                                  binding.result.show()
+                                  binding.candidates.show()
+                              } else if (dataState.data.isCancelled) {
+                                  binding.vote.gone()
+                                  binding.result.gone()
+                                  binding.candidates.gone()
+                                  info_dashboard.show()
+                                  info_dashboard.text = "Election is Cancelled"
+                              } else {
+//                                   if(!it.voted)
+//                                   {
+//
+//                                       binding.result.gone()
+//                                       binding.candidates.show()
+//                                       binding.vote.show()
+                                  lifecycleScope.launch {
+                                      viewModel.electionInfo(it.electionId!!)
                                   }
 
+                                  viewModel.votedLiveData.observe(viewLifecycleOwner,
+                                      Observer { dataState ->
+                                          when (dataState) {
+                                              is DataState.Loading -> {
 
-                                  else if(dataState.data.isCancelled) {
-                                      binding.vote.gone()
-                                      binding.result.gone()
-                                      binding.candidates.gone()
-                                      info_dashboard.show()
-                                      info_dashboard.text = "Election is Cancelled"
-                                  }
-                              else
-                                  {
-                                   if(!it.voted)
-                                   {
+                                              }
+                                              is DataState.Success -> {
+                                                  dashboard_loader.gone()
+                                                  if (!dataState.data) {
+                                                      binding.result.gone()
+                                                      binding.candidates.show()
+                                                      binding.vote.show()
+                                                  } else {
+                                                      binding.result.show()
+                                                      binding.candidates.show()
+                                                      binding.vote.gone()
+                                                  }
+                                              }
+                                          }
 
-                                       binding.result.gone()
-                                       binding.candidates.show()
-                                       binding.vote.show()
-                                       lifecycleScope.launch {
-                                           viewModel.electionInfo(it.electionId!!)
-                                       }
+                                      })
+                              
 
-                                       viewModel.votedLiveData.observe(viewLifecycleOwner,
-                                           Observer { dataState->
-                                               when(dataState)
-                                               {
-                                                   is DataState.Loading->
-                                                   {
-
-                                                   }
-                                                   is DataState.Success->
-                                                   {
-                                                       dashboard_loader.gone()
-                                                       if(!dataState.data)
-                                                       {
-                                                           binding.result.gone()
-                                                           binding.candidates.show()
-                                                           binding.vote.show()
-                                                       }
-                                                       else
-                                                       {
-                                                           binding.result.show()
-                                                           binding.candidates.show()
-                                                           binding.vote.gone()
-                                                       }
-                                                   }
-                                               }
-
-                                           })
-                                   }
-                                      else
-                                   {
-                                       binding.result.show()
-                                       binding.candidates.show()
-                                       binding.vote.gone()
-                                   }
+//                                      else
+//                                   {
+//                                       binding.result.show()
+//                                       binding.candidates.show()
+//                                       binding.vote.gone()
+//                                   }
                                   }
 
 
