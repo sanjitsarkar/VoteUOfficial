@@ -257,6 +257,7 @@ suspend fun updateVoteCount()
 //            emit(DataState.Info(userInfo?.email!!))
 
 
+//Log.d("AppDebug",collegeSearch.capitalize())
 Log.d("AppDebug",collegeSearch.capitalize())
             val data = getStudentDetails(
                 collegeSearch.capitalize(),
